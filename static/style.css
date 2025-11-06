@@ -1,70 +1,126 @@
 :root{
-    --blue:#6AAFE6;     /* soft blue */
-    --turquoise:#40E0D0;/* turquoise */
-    --cyan:#17C3CE;     /* cyan */
-    --teal:#008B8B;     /* deep teal */
-    --gold:#C9A227;     /* soft gold */
-    --ink:#0f172a;      /* slate-900 */
-    --ink-2:#334155;    /* slate-600 */
-    --bg:#f8fafc;       /* near white */
-    --card:#ffffff;     /* white */
+    /* New palette */
+    --moss:#2C3424;      /* deep green (primary/ink) */
+    --olive:#768064;     /* page background */
+    --cypress:#4C583E;   /* accents/buttons */
+    --cedar:#959581;     /* borders/lines, subtle text */
+    --aloe:#DADED8;      /* light surfaces / contrast */
+  
+    /* Mapped tokens used below (kept your old names for minimal edits) */
+    --ink:var(--moss);
+    --ink-2:var(--cedar);
+    --bg:var(--olive);
+    --card:#ffffff;
   }
+  
+  /* Base */
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
-    color:var(--ink); background:linear-gradient(180deg,var(--bg),#eef7fb);
+    margin:0;
+    font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
+    color:var(--aloe);                         /* readable on olive bg */
+    background:var(--bg);
   }
   
   /* Top nav */
   .header, .nav{
-    position:sticky; top:0; z-index:1000; backdrop-filter:saturate(1.2) blur(8px);
-    background:linear-gradient(90deg, rgba(255,255,255,.85), rgba(255,255,255,.75));
-    border-bottom:1px solid rgba(0,0,0,.06);
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter:saturate(1.05) blur(8px);
+    background:color-mix(in oklab, var(--olive) 70%, white 30%);
+    border-bottom:1px solid var(--cedar);
     display:flex; align-items:center; justify-content:space-between;
     padding:.75rem 1rem;
   }
-  .brand{font-weight:800; color:var(--teal); text-decoration:none;}
-  .nav a{margin:0 .5rem; text-decoration:none; color:var(--ink-2);}
-  .nav a:hover{color:var(--teal)}
-  .nav a.active{color:var(--gold)}
+  .brand{
+    font:700 1rem/1 Cinzel, serif;
+    letter-spacing:.08em;
+    color:var(--aloe);
+    text-decoration:none;
+    padding:.35rem .55rem;
+    border:1px solid var(--cedar);
+    border-radius:10px;
+    background:color-mix(in oklab, var(--olive) 50%, white 50%);
+  }
+  .nav a{
+    margin:0 .5rem; text-decoration:none; color:var(--aloe);
+    font-weight:500;
+    position:relative;
+  }
+  .nav a:hover{color:#fff}
+  .nav a.active{color:#fff}
+  .nav a.active::after,
+  .nav a:hover::after{
+    content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
+    background:linear-gradient(90deg, var(--cypress), var(--aloe));
+  }
   
   /* Sections */
   .section{padding:72px 0}
-  .section.alt{background:linear-gradient(180deg, rgba(64,224,208,.05), rgba(23,195,206,.05));}
+  .section.alt{
+    background:linear-gradient(180deg,
+      color-mix(in oklab, var(--olive) 92%, white 8%),
+      color-mix(in oklab, var(--olive) 88%, white 12%));
+  }
   .container{max-width:1000px; margin:0 auto; padding:0 1rem}
   .split{display:grid; grid-template-columns:1.2fr .8fr; gap:1rem}
   .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:.75rem}
   .cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1rem}
   
+  /* Typography tweaks */
+  h1,h2,h3,.brand{font-family:Cinzel, serif; color:#fff}
+  h2,h3{color:var(--aloe)}
+  p,li,small{color:var(--aloe)}
+  
   /* Hero */
   .hero{
     min-height:70vh; display:grid; place-items:center; text-align:center;
-    background:radial-gradient(1200px 500px at 50% -20%, rgba(106,175,230,.3), transparent),
-               radial-gradient(1000px 600px at 80% 20%, rgba(23,195,206,.25), transparent),
-               radial-gradient(900px 500px at 20% 40%, rgba(0,139,139,.20), transparent);
+    /* subtle texture-ish glow using palette */
+    background:
+      radial-gradient(900px 460px at 20% 0%, color-mix(in oklab, var(--cypress) 35%, transparent), transparent),
+      radial-gradient(1100px 520px at 80% 20%, color-mix(in oklab, var(--aloe) 30%, transparent), transparent);
   }
   .hero h1{font-size:clamp(2rem,6vw,3.5rem); margin:.2em 0 .3em}
-  .accent{color:var(--gold)}
+  .accent{color:var(--aloe)}
   
   /* UI bits */
-  .card{background:var(--card); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,.06)}
-  .chip{display:inline-block; padding:.4rem .7rem; border-radius:999px; border:1px solid rgba(0,0,0,.08); background:#fff}
-  .btn{display:inline-block; padding:.8rem 1rem; border-radius:12px; border:none; text-decoration:none; font-weight:600; cursor:pointer; color:#fff; background:linear-gradient(135deg, var(--teal), var(--cyan)); box-shadow:0 6px 16px rgba(0,139,139,.25)}
-  .btn:hover{filter:brightness(1.05)}
-  .link{color:var(--teal); text-decoration:none; font-weight:600}
+  .card{
+    background:var(--card);
+    color:var(--ink);
+    border:1px solid var(--cedar);
+    border-radius:16px; padding:1rem;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+  .chip{
+    display:inline-block; padding:.4rem .7rem; border-radius:999px;
+    border:1px solid var(--cedar); background:#fff; color:var(--moss); font-weight:600;
+  }
+  .btn{
+    display:inline-block; padding:.8rem 1rem; border-radius:12px; border:none;
+    text-decoration:none; font-weight:700; cursor:pointer; color:#fff;
+    background:linear-gradient(135deg, var(--cypress), var(--moss));
+    box-shadow:0 6px 16px rgba(44,52,36,.25);
+  }
+  .btn:hover{filter:brightness(1.04)}
+  .link{color:var(--aloe); text-decoration:none; font-weight:600}
   .link:hover{text-decoration:underline}
-  .bullets{margin:0; padding-left:1rem}
+  .bullets{margin:0; padding-left:1rem; color:var(--ink)}
   
   /* Contact */
   .contact{display:grid; gap:.6rem; max-width:560px}
-  .contact input,.contact textarea{padding:.8rem 1rem; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff}
+  .contact input,.contact textarea{
+    padding:.8rem 1rem; border-radius:10px;
+    border:1px solid var(--cedar); background:#fff; color:var(--moss);
+  }
   .contact button{justify-self:start}
-  .muted{color:var(--ink-2)}
+  .muted{color:var(--aloe)}
   
   /* Footer */
-  .footer{padding:32px 0; border-top:1px solid rgba(0,0,0,.06); text-align:center; color:var(--ink-2)}
+  .footer{
+    padding:32px 0; border-top:1px solid var(--cedar); text-align:center; color:var(--aloe)
+  }
   
+  /* Responsive */
   @media (max-width: 840px){
     .split{grid-template-columns:1fr}
   }
