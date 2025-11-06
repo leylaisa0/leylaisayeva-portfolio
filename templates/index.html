@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leyla Isayeva – Portfolio</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script defer src="/static/script.js"></script>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#hero">LI</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="section hero">
+      <div class="container">
+        <h1>Hello, I’m <span class="accent">Leyla</span>.</h1>
+        <p>Software engineering student in Paris. I build practical, human-centered tech.</p>
+        <a class="btn" href="#projects">See my work</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container split">
+        <div>
+          <h2>About</h2>
+          <p>
+            I’m a multilingual developer interested in AI-assisted wellness apps,
+            data dashboards, and elegant, maintainable code.
+          </p>
+        </div>
+        <div class="card">
+          <ul class="bullets">
+            <li>Languages: Python, HTML/CSS/JS</li>
+            <li>Tools: Git, Flask, VS Code</li>
+            <li>Focus: UX clarity, performance, accessibility</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="grid">
+          <div class="chip">Python</div><div class="chip">Flask</div>
+          <div class="chip">HTML</div><div class="chip">CSS</div>
+          <div class="chip">JavaScript</div><div class="chip">Git & GitHub</div>
+          <div class="chip">APIs</div><div class="chip">Data Viz</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Wellness AI Assistant</h3>
+            <p>A lightweight Flask app that tracks mood and suggests micro-routines.</p>
+            <a class="link" href="#">View Repo</a>
+          </article>
+          <article class="card">
+            <h3>Crypto Pulse Dashboard</h3>
+            <p>Clean charts, simple alerts, and a rational watchlist UX.</p>
+            <a class="link" href="#">View Repo</a>
+          </article>
+          <article class="card">
+            <h3>Study Planner</h3>
+            <p>Pomodoro + spaced repetition with a distraction-free UI.</p>
+            <a class="link" href="#">View Repo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Open to internships, collaborations, and interesting problems.</p>
+        <form class="contact" action="#" method="post" onsubmit="return false;">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" rows="5" placeholder="Your message"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="muted">Or email: <a href="mailto:leylaisayeva2505@gmail.com">leylaisayeva2505@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> Leyla Isayeva. All rights reserved.</small>
+    </div>
+  </footer>
+</body>
+</html>
